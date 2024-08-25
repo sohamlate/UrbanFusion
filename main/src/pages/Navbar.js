@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import logo from "../assets/logo.png";
 
 const Navbar = ({ isLoggedIn,}) => {
 
@@ -12,7 +13,7 @@ const Navbar = ({ isLoggedIn,}) => {
         <div className="left-0">
           <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img
-              src="https://res.cloudinary.com/dsy3ebkqc/image/upload/v1712813661/image-removebg-preview_2_z62obq.png"
+              src={logo}
               className="w-[13rem]"
               alt="Huehub Logo"
             />
