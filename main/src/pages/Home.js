@@ -5,7 +5,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
       <div className="flex flex-col items-center justify-center h-screen bg-blue-500 text-white text-center">
-        <h1 className="text-5xl font-bold mb-4">Welcome to the Urban Governance Platform</h1>
+        <h1 className="text-5xl font-bold mb-4">Welcome to the Urban Governance Platform....................................................</h1>
         <p className="text-lg mb-8">Streamlining interdepartmental cooperation for better urban management.</p>
         <button className="bg-white text-blue-500 font-semibold py-2 px-4 rounded-full hover:bg-blue-700 hover:text-white transition duration-300">
           Get Started
