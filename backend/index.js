@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const centralAdminRoutes = require('./routes/centralAdminRoutes');
 const user = require('./routes/user');
+const Project = require('./routes/Project');
 // const contactRoute = require('./routes/contactRoutes');
 
 dotenv.config();
@@ -29,6 +30,7 @@ mongoose.connect(db)
 
   app.use('/admin', centralAdminRoutes);
   app.use('/user', user);
+  app.use('/project', Project)
 
 // Routes
 app.get("/", (req, res) => {

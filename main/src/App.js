@@ -10,6 +10,15 @@ import SignUp from './pages/Signup';
 import Contact from './pages/Contact';
 import EmailEntryPage from './pages/EmailEntryPage';
 import axios from 'axios';
+import SchedulingPage from './pages/schedule';
+import TrainingPage from './pages/TrainingPage';
+import IntraDepartmentalForumPage from './pages/IntraDepartmentalForumPage';
+import InterDepartmentalForumPage from './pages/InterDepartmentalForumPage';
+import PublicForumPage from './pages/PublicForumPage';
+import DiscussionPageinter from './pages/fakediscussioninter';
+import AnnouncementForm from './pages/AnnouncementForm';
+import ResourcesPage from './pages/resources';
+
 
 export default function App() {
 
@@ -72,9 +81,8 @@ export default function App() {
   console.log("settoiing user",user);
 
   return (
-    <>
-      <div className="text-lg">
-        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> {/* Pass isLoggedIn to Navbar */}
+    <div className="text-lg">
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}  /> {/* Pass isLoggedIn as needed */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
@@ -83,15 +91,18 @@ export default function App() {
           <Route path="/forums/inter-department" element={<InterDepartmentalForumPage />} />
           <Route path="/forums/public" element={<PublicForumPage />} />
           <Route path="/forum" element={<Forum />} />
-          <Route 
-            path="/login" 
-            element={<Login setUser={setUser} setIsLoggedIn={setIsLoggedIn} />} 
-          />
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/otp" element={<EmailEntryPage/>}></Route>
           <Route path="/contact" element={<Contact />} />
-          <Route path="/otp" element={<EmailEntryPage />} />
+          <Route path="/scheduling" element={<SchedulingPage />} />
+          <Route path="/training" element={<TrainingPage />} />
+          <Route path="/discussion/:id" element={<DiscussionPageinter />} />
+          <Route path="/announcement" element={<AnnouncementForm />} /> {/* Add route for AnnouncementForm */}
+          <Route path="/resources" element={<ResourcesPage />} />
+
         </Routes>
       </div>
-    </>
+   
   );
 }

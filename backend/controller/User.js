@@ -88,6 +88,8 @@ exports.autoLogin = async (req, res, next) => {
       });
     }
 
+    console.log(response,"response printing ")
+
     if (!response) {
       console.log("Invalid response after verification");
       return res.status(401).json({
@@ -100,6 +102,7 @@ exports.autoLogin = async (req, res, next) => {
     const user = await User.findOne({ email: email });
 
     if (!user) {
+      console.log(email,"user gayab ho gaya");
       return res.status(401).json({
         success: false,
         message: "Unauthorized",
@@ -306,7 +309,7 @@ exports.login = async (req, res) => {
 
     
     const token = jwt.sign(
-      { userID: user.userID, role: user.role, id: user._id },
+      { userID: user.userID, role: user.role, id: user._id , email:email},
       process.env.JWT_SECRET,
       { expiresIn: "2h" }
     );
