@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './projects.css';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -114,7 +115,9 @@ const Projects = () => {
           className={`py-2 px-4 rounded-md ${filter === 'planning' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
         >
           Planning
+          
         </button>
+        
         <button
           onClick={() => handleFilterChange('in-progress')}
           className={`py-2 px-4 rounded-md ${filter === 'in-progress' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
@@ -127,8 +130,10 @@ const Projects = () => {
         >
           Completed
         </button>
+        
       </div>
-
+      
+      
       <div className='flex justify-evenly'>
 
         <form onSubmit={handleAddProject} className="mb-6 space-y-4">
@@ -215,5 +220,4 @@ const Projects = () => {
     </div>
   );
 };
-
-export default Projects;
+export default Projects ;

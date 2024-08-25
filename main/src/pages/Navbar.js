@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo3.png";
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +17,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         {/* Logo Section */}
         <div className="flex items-center space-x-3">
           <a href="/" className="flex items-center">
-            <img src={logo} className="w-36" alt="Urban Governance Logo" />
+            <img src={logo} className="w-10" alt="Urban Governance Logo" />
           </a>
         </div>
 

@@ -40,23 +40,55 @@ const HomePage = () => {
       </header> */}
 
       {/* Main Content */}
+
+
+
+      {/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */}
       <h3 className="mt-[3rem] text-xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-4xl lg:text-5xl leading-tight text-center mb-6">
-  Urban Governance Platform
-</h3>
+        Urban Governance Platform
+      </h3>
 
       <main className="flex-grow py-8">
         <div className="max-w-screen-xl mx-auto px-6 flex flex-col lg:flex-row lg:space-x-8">
-      
+        
           {/* Content Section */}
           <div className="flex-1">
             {/* Image Above Announcements */}
+            {/* Recent Activity Feed */}
+            <section className="bg-white p-6 rounded-lg shadow-md mb-6 border border-gray-200">
+              <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-teal-500 text-white p-3 rounded-full">
+                    <HomeIcon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="text-gray-800">Updated project status for XYZ.</p>
+                    <p className="text-sm text-gray-500">2 hours ago</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="bg-blue-500 text-white p-3 rounded-full">
+                    <CalendarIcon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="text-gray-800">Scheduled meeting for department A.</p>
+                    <p className="text-sm text-gray-500">5 hours ago</p>
+                  </div>
+                </div>
+                {/* Add more activity items here */}
+              </div>
+            </section>
+
+
+            
             <div className="mb-6 relative flex justify-center items-center">
             
             <img
-  src={governmentImage}
-  alt="Government"
-  className=" h-[600px] w-[1000px]  screen object-cover rounded-lg shadow-md border border-gray-200"
-/>
+              src={governmentImage}
+              alt="Government"
+              className=" h-[600px] w-[1000px]  screen object-cover rounded-lg shadow-md border border-gray-200"
+            />
 
             </div>
 
@@ -109,31 +141,7 @@ const HomePage = () => {
               </div>
             </section>
 
-            {/* Recent Activity Feed */}
-            <section className="bg-white p-6 rounded-lg shadow-md mb-6 border border-gray-200">
-              <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-teal-500 text-white p-3 rounded-full">
-                    <HomeIcon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-gray-800">Updated project status for XYZ.</p>
-                    <p className="text-sm text-gray-500">2 hours ago</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-blue-500 text-white p-3 rounded-full">
-                    <CalendarIcon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-gray-800">Scheduled meeting for department A.</p>
-                    <p className="text-sm text-gray-500">5 hours ago</p>
-                  </div>
-                </div>
-                {/* Add more activity items here */}
-              </div>
-            </section>
+            
 
             {/* Overview Section */}
             <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
