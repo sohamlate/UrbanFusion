@@ -28,10 +28,10 @@ const Navbar = ({ isLoggedIn,}) => {
             <NavLink to="/">Home</NavLink>
           </div>
           <div className="text-xl text-white font-bold hover:border-b-2 transition-all duration-100 hover:text-yellow-300 border-yellow-300 cursor-pointer">
-            <NavLink to="/gallery">Gallery</NavLink>
+            <NavLink to="/project">Projects</NavLink>
           </div>
           <div className="text-xl text-white font-bold hover:border-b-2 transition-all duration-100 hover:text-yellow-300 border-yellow-300 cursor-pointer">
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/resources">Resources</NavLink>
           </div>
           <div className="text-xl text-white font-bold hover:border-b-2 transition-all duration-100 hover:text-yellow-300 border-yellow-300 cursor-pointer">
             <NavLink to="/contact">Contact</NavLink>
