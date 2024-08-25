@@ -11,7 +11,7 @@ const EmailEntryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/user/sendotp', { email });
+      const response = await axios.post('https://urban-fusion-jm21.vercel.app/user/sendotp', { email });
       if (response.data.success) {
         setSuccess('OTP sent successfully. Redirecting to signup page...');
         setError('');

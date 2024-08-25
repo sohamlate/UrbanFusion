@@ -21,7 +21,7 @@ const Login = (props) => {
       console.log("hiii");
   
       const response = await axios.post(
-        "http://localhost:5000/user/login",
+        "https://urban-fusion-jm21.vercel.app/user/login",
         {email , password}
       );
       console.log(response);

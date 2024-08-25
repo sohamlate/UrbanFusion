@@ -12,7 +12,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/project/');
+        const response = await axios.get('https://urban-fusion-jm21.vercel.app/project/');
         setProjects(response.data);
       } catch (error) {
         setError('Failed to fetch projects');
@@ -33,7 +33,7 @@ const Projects = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/project/', {
+      const response = await axios.post('https://urban-fusion-jm21.vercel.app/project/', {
         projectID: `proj_${Date.now()}`, // Generate a simple unique ID for the project
         title,
         description: 'Default description', // Default description
@@ -63,7 +63,7 @@ const Projects = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost:5000/project/search?location=${searchLocation}`);
+      const response = await axios.get(`https://urban-fusion-jm21.vercel.app/project/search?location=${searchLocation}`);
       setProjects(response.data);
       setError('');
     } catch (error) {
@@ -79,7 +79,7 @@ const Projects = () => {
     }
 
     try {
-      const response = await axios.put(`http://localhost:5000/project/${projectId}`, { status: newStatus });
+      const response = await axios.put(`https://urban-fusion-jm21.vercel.app/project/${projectId}`, { status: newStatus });
       // Update the project list with the updated project
       setProjects(projects.map(project =>
         project._id === projectId ? { ...project, status: newStatus } : project

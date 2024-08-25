@@ -40,7 +40,7 @@ export default function App() {
           }
   
           const response = await axios.get(
-            "http://localhost:5000/user/autoLogin",
+            "https://urban-fusion-jm21.vercel.app/user/autoLogin",
             {
               headers: {
                 Authorization: `${token}`,

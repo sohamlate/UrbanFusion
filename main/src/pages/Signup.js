@@ -38,7 +38,7 @@ const Signup = () => {
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/user/signup', {
+      const response = await axios.post('https://urban-fusion-jm21.vercel.app/user/signup', {
         email,
         password,
         confirmPassword,
