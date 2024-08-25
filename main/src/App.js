@@ -6,7 +6,7 @@ import Projects from './pages/Projects';
 import Tasks from './pages/Tasks';
 import Forum from './pages/Forum';
 import Login from './pages/Login';
-import Register from './pages/Register';
+import SignUp from './pages/Signup';
 import Contact from './pages/Contact';
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<SignUp />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
