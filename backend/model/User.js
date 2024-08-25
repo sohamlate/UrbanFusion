@@ -16,7 +16,8 @@ const userSchema = new Schema({
     addEmployee: { type: Boolean, default: false },
     removeEmployee: { type: Boolean, default: false }
   },
-  department: { type: Schema.Types.ObjectId, ref: 'Department' }, 
+  // department: { type: Schema.Types.ObjectId, ref: 'Department' }, 
+  department: { type: String, ref: 'Department' }, 
   aadhaarNumber: { type: String, select: false },
   PAN: { type: String, select: false },
   createdAt: { type: Date, default: Date.now },

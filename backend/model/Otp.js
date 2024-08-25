@@ -22,7 +22,7 @@ const otpSchema = new mongoose.Schema({
 
 async function sendVerificationMail(email,otp){
     try{
-        const mailResponse = await mailSender(email,"verification mail from huehub",`Your One time password ,do not share with anyone ${otp}`);
+        const mailResponse = await mailSender(email,"verification mail from urban fusion",`Your One time password ,do not share with anyone ${otp}`);
         console.log("Email send successfully",mailResponse);
     }
     catch(error){
