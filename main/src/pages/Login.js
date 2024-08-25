@@ -1,34 +1,37 @@
 import React, { useState } from 'react';
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+
+const Login = (props) => {
+  let setIsLoggedIn = props.setIsLoggedIn;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [otp, setOtp] = useState('');
   const [loginType, setLoginType] = useState('email'); // 'email' or 'otp'
   const [userRole, setUserRole] = useState('user'); // 'user' or 'admin'
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+ 
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic based on loginType and userRole
-    if (loginType === 'email') {
-      if (email && password) {
-        console.log('Email:', email);
-        console.log('Password:', password);
-        console.log('Role:', userRole);
-        // Handle email/password login for user/admin
-      } else {
-        setError('Please fill in all fields');
-      }
-    } else if (loginType === 'otp') {
-      if (email && otp) {
-        console.log('Email:', email);
-        console.log('OTP:', otp);
-        console.log('Role:', userRole);
-        // Handle OTP login for user/admin
-      } else {
-        setError('Please fill in all fields');
-      }
+    try {
+      console.log("hiii");
+  
+      const response = await axios.post(
+        "http://localhost:5000/user/login",
+        {email , password}
+      );
+      console.log(response);
+      localStorage.setItem("token", response.data.token);
+      setIsLoggedIn(true);
+      navigate('/');
+      toast.success("Logged In ");
+    } catch (error) {
+         console.error("Error:", error);
+    
     }
   };
 
@@ -38,7 +41,7 @@ const Login = () => {
         <h1 className="text-2xl font-bold mb-6 text-center text-blue-500">Login</h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         
-        <div className="text-center mb-4">
+        {/* <div className="text-center mb-4">
           <button
             onClick={() => setUserRole('user')}
             className={`py-2 px-4 rounded-l-md ${userRole === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
@@ -51,7 +54,7 @@ const Login = () => {
           >
             Admin Login
           </button>
-        </div>
+        </div> */}
         
      
         

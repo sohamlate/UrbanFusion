@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo3.png";
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    // Clear authentication data (e.g., localStorage)
+    localStorage.removeItem("authToken");
+    setIsLoggedIn(false);
+  };
 
   return (
     <nav className="bg-gradient-to-r from-teal-500 to-blue-600 text-white shadow-md">
@@ -45,7 +51,22 @@ const Navbar = ({ isLoggedIn }) => {
 
         {/* Desktop Authentication Links */}
         <div className="hidden md:flex items-center space-x-4">
-          {!isLoggedIn && (
+          {isLoggedIn ? (
+            <>
+              <NavLink
+                to="/profile"
+                className="text-lg font-semibold hover:text-yellow-300"
+              >
+                Profile
+              </NavLink>
+              <button
+                onClick={handleLogout}
+                className="text-lg font-semibold hover:text-yellow-300"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
             <>
               <NavLink
                 to="/login"
@@ -71,7 +92,7 @@ const Navbar = ({ isLoggedIn }) => {
             className="text-white text-2xl"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? '✖️' : '☰'}
+            {isMenuOpen ? "✖️" : "☰"}
           </button>
         </div>
       </div>
@@ -108,6 +129,25 @@ const Navbar = ({ isLoggedIn }) => {
             Contact
           </NavLink>
           {!isLoggedIn && (
+            <>
+              <NavLink
+                to="/login"
+                className="block text-lg font-semibold text-white hover:text-yellow-300 mb-3"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Profile
+              </NavLink>
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  handleLogout();
+                }}
+                className="block w-full text-left px-4 py-2 text-sm text-white hover:text-yellow-300"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
             <>
               <NavLink
                 to="/login"
