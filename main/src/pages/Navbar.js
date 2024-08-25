@@ -7,7 +7,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const handleLogout = () => {
     // Clear authentication data (e.g., localStorage)
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
   };
 

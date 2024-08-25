@@ -40,9 +40,9 @@ const HomePage = () => {
       </header> */}
 
       {/* Main Content */}
-      <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-center mb-6">
+      <h3 className="mt-[3rem] text-xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-4xl lg:text-5xl leading-tight text-center mb-6">
   Urban Governance Platform
-</h1>
+</h3>
 
       <main className="flex-grow py-8">
         <div className="max-w-screen-xl mx-auto px-6 flex flex-col lg:flex-row lg:space-x-8">
@@ -50,12 +50,12 @@ const HomePage = () => {
           {/* Content Section */}
           <div className="flex-1">
             {/* Image Above Announcements */}
-            <div className="mb-6 relative">
+            <div className="mb-6 relative flex justify-center items-center">
             
             <img
   src={governmentImage}
   alt="Government"
-  className="w-full h-[600px] w-[1300px] screen object-cover rounded-lg shadow-md border border-gray-200"
+  className=" h-[600px] w-[1000px]  screen object-cover rounded-lg shadow-md border border-gray-200"
 />
 
             </div>
