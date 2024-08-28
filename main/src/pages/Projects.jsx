@@ -41,7 +41,10 @@ const Projects = () => {
 
       mapInstance.on('click', (e) => {
         const { lat, lng } = e.latlng;
-        setNewProject({ ...newProject, location: { lat, lng } });
+        setNewProject(prevProject => ({
+          ...prevProject,
+          location: { lat, lng }
+        }));
         if (marker) {
           marker.setLatLng([lat, lng]);
         } else {
@@ -306,7 +309,7 @@ const Projects = () => {
           Search
         </button>
       </div>
-      
+
       <div className="mb-6 flex space-x-4">
         <button
           onClick={() => handleFilterChange('all')}
