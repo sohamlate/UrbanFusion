@@ -14,8 +14,8 @@ exports.getAllProjects = async (req, res) => {
 exports.addProject = async (req, res) => {
   const { projectID, title, description, location, departmentsInvolved, legalComplianceStatus } = req.body;
 
-  if (!projectID || !title || !description || !location) {
-    return res.status(400).json({ error: 'All required fields must be filled' });
+  if (!projectID || !title || !description || !location || !location.lat || !location.lng) {
+    return res.status(400).json({ error: 'All required fields must be filled, including location coordinates' });
   }
 
   try {
@@ -35,65 +35,75 @@ exports.addProject = async (req, res) => {
   }
 };
 
+// Controller to update project status
 exports.updateProjectStatus = async (req, res) => {
-    const { projectId } = req.params;
-    const { status } = req.body;
-  
-    const validStatuses = ['planning', 'in-progress', 'completed'];
-  
-    // Validate status
-    if (!validStatuses.includes(status)) {
-      return res.status(400).json({ error: 'Invalid status value' });
-    }
-  
-    try {
-      const project = await Project.findById(projectId);
-  
-      if (!project) {
-        return res.status(404).json({ error: 'Project not found' });
-      }
-  
-      // Check if status transition is valid
-      if (
-        (project.status === 'planning' && status === 'completed') ||
-        (project.status === 'in-progress' && status === 'planning')
-      ) {
-        return res.status(400).json({ error: 'Invalid status transition' });
-      }
-  
-      // Update project status
-      project.status = status;
-      project.updatedAt = Date.now(); // Update the timestamp
-      const updatedProject = await project.save();
-  
-      res.status(200).json(updatedProject);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to update project status' });
-    }
-  };
+  const { projectId } = req.params;
+  const { status } = req.body;
 
-exports.searchProjectsByLocation = async (req, res) => {
-    const { location } = req.query;
-  
-    if (!location) {
-      return res.status(400).json({ error: 'Location is required' });
-    }
-  
-    try {
-      // Perform a case-insensitive search for projects with matching location
-      const projects = await Project.find({ location: { $regex: new RegExp(location, 'i') } });
-      
-      if (projects.length === 0) {
-        return res.status(404).json({ error: 'No projects found for the specified location' });
-      }
-  
-      res.status(200).json(projects);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to search projects by location' });
-    }
-  };
+  const validStatuses = ['planning', 'in-progress', 'completed'];
 
-// Controller to get projects by status
+  // Validate status
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ error: 'Invalid status value' });
+  }
+
+  try {
+    const project = await Project.findById(projectId);
+
+    if (!project) {
+      return res.status(404).json({ error: 'Project not found' });
+    }
+
+    // Check if status transition is valid
+    if (
+      (project.status === 'planning' && status === 'completed') ||
+      (project.status === 'in-progress' && status === 'planning')
+    ) {
+      return res.status(400).json({ error: 'Invalid status transition' });
+    }
+
+    // Update project status
+    project.status = status;
+    project.updatedAt = Date.now(); // Update the timestamp
+    const updatedProject = await project.save();
+
+    res.status(200).json(updatedProject);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update project status' });
+  }
+};
+
+
+exports.searchProjects = async (req, res) => {
+  try {
+    const { lat, lng, radius } = req.query; 
+    const radiusInMeters = parseInt(radius) || 5000; 
+
+    if (!lat || !lng) {
+      return res.status(400).json({ message: 'Latitude and Longitude are required' });
+    }
+
+   
+    const latNum = parseFloat(lat);
+    const lngNum = parseFloat(lng);
+
+   
+    const projects = await Project.find({
+      location: {
+        $geoWithin: {
+          $centerSphere: [[lngNum, latNum], radiusInMeters / 6378100] // 6378100 is Earth's radius in meters
+        }
+      }
+    });
+
+    res.json(projects);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
 exports.getProjectsByStatus = async (req, res) => {
   const { status } = req.params;
 

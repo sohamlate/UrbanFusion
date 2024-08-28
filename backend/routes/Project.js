@@ -11,7 +11,7 @@ router.post('/', projectController.addProject);
 // Route to get projects by status
 router.get('/filter/:status', projectController.getProjectsByStatus);
 
-router.get('/search', projectController.searchProjectsByLocation);
+router.get('/search', projectController.searchProjects);
 
 router.put('/:projectId', projectController.updateProjectStatus);
 
