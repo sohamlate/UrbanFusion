@@ -280,6 +280,33 @@ const Projects = () => {
         </form>
       </div>
 
+
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold mb-4 text-blue-500">Search Projects by Location</h2>
+        <div className="flex items-center mb-4">
+          <input
+            type="text"
+            value={searchCity}
+            onChange={(e) => setSearchCity(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            placeholder="Enter city name for search map"
+          />
+          <button
+            onClick={handleSearchCity}
+            className="ml-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300"
+          >
+            Zoom to City (Search Map)
+          </button>
+        </div>
+        <div ref={searchMapContainer} style={{ height: '300px', borderRadius: '8px' }} />
+        <button
+          onClick={handleSearch}
+          className="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300"
+        >
+          Search
+        </button>
+      </div>
+      
       <div className="mb-6 flex space-x-4">
         <button
           onClick={() => handleFilterChange('all')}
@@ -308,32 +335,6 @@ const Projects = () => {
           Completed
         </button>
         
-      </div>
-
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-4 text-blue-500">Search Projects by Location</h2>
-        <div className="flex items-center mb-4">
-          <input
-            type="text"
-            value={searchCity}
-            onChange={(e) => setSearchCity(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter city name for search map"
-          />
-          <button
-            onClick={handleSearchCity}
-            className="ml-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300"
-          >
-            Zoom to City (Search Map)
-          </button>
-        </div>
-        <div ref={searchMapContainer} style={{ height: '300px', borderRadius: '8px' }} />
-        <button
-          onClick={handleSearch}
-          className="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300"
-        >
-          Search
-        </button>
       </div>
 
       <div>
